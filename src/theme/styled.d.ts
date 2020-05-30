@@ -6,5 +6,8 @@ declare module 'styled-components' {
     color: {
       [key: string]: string;
     };
+    size: {
+      [key: string]: number;
+    };
   }
 }

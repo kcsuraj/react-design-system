@@ -23,6 +23,16 @@ const gray = '#555';
 const grayLight = '#777';
 const grayLighter = '#eee';
 
+// ## Font sizes
+const size1 = 32;
+const size2 = 28;
+const size3 = 24;
+const size4 = 20;
+const size5 = 18;
+const size6 = 16;
+const size7 = 14;
+const size8 = 12;
+
 const theme: IDefaultTheme = {
   color: {
     danger: amaranth,
@@ -37,6 +47,16 @@ const theme: IDefaultTheme = {
     success: emerald,
     warning: jaffa,
     white
+  },
+  size: {
+    size1,
+    size2,
+    size3,
+    size4,
+    size5,
+    size6,
+    size7,
+    size8
   }
 };
 

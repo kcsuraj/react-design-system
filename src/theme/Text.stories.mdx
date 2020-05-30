@@ -1,0 +1,22 @@
+<!-- Defines font families, sizes and weights  -->
+
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+import { theme } from 'theme';
+
+<Meta title="Theme/Typography Scale" />
+
+# Typographic Scale
+
+<Typeset
+  fontSizes={[
+    Number(theme.size.size8),
+    Number(theme.size.size7),
+    Number(theme.size.size6),
+    Number(theme.size.size5),
+    Number(theme.size.size4),
+    Number(theme.size.size3),
+    Number(theme.size.size2),
+    Number(theme.size.size1)
+  ]}
+  fontWeight="600"
+/>
