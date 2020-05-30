@@ -1,0 +1,41 @@
+<!-- Defines brand color stories -->
+
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { theme } from 'theme';
+const { color } = theme;
+
+<Meta title="Theme/Colors" />
+
+# Colors
+
+<ColorPalette>
+  <ColorItem title="Primary" colors={[color.primary, color.white]} />
+  <ColorItem title="Secondary" colors={[color.sec, color.success, color.warning, color.danger]} />
+  <ColorItem title="Neutral" colors={[ color.grayBase, 
+    color.grayDarker,
+    color.grayDark,
+    color.gray,
+    color.grayLight,
+    color.grayLighter]} />
+
+</ColorPalette>
+
+# Usage
+
+**In TypeScript**
+
+```
+import { theme } from theme;
+
+console.log(theme.primary);
+```
+
+**In Styled Components**
+
+```
+import { theme } from theme;
+
+const StyledHeader = styled.div`
+  color: ${(props) => props.theme.primary};
+`;
+```
