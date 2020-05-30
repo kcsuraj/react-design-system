@@ -1,0 +1,11 @@
+{
+  "extends": ["tslint:latest", "tslint-config-prettier", "tslint-react"],
+  "rules": {
+    "jsx-no-lambda": false,
+    "jsx-no-multiline-js": false,
+    "member-access": false,
+    "no-implicit-dependencies": false,
+    "jsx-wrap-multiline": false,
+    "no-submodule-imports": false
+  }
+}
