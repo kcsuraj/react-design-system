@@ -44,17 +44,18 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.0.0",
     "@storybook/react": "^5.3.19",
+    "gh-pages": "^2.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
-    "tslint-config-prettier": "^1.18.0",
     "tslint": "^6.1.1",
-    "tslint-react": "^5.0.0",
-    "gh-pages": "^2.2.0"
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^5.0.0"
   },
   "husky": {
     "hooks": {
