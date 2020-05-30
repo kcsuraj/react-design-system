@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{1285:function(t,e,n){"use strict";n.r(e);var s=n(67),i=n(419),o=Object(i.create)({base:"light",brandTitle:"Design System ",brandUrl:"https://kcsuraj.github.io/react-design-system"});s.addons.setConfig({theme:o})},421:function(t,e,n){n(422),n(570),n(1285),n(1246),n(1248),t.exports=n(1279)},487:function(t,e){}},[[421,1,2]]]);
