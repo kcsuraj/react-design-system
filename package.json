@@ -23,7 +23,9 @@
     "lint": "tslint --project tsconfig.json",
     "lint:fix": "tslint --fix --project tsconfig.json",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "predeploy": "yarn build-storybook",
+    "deploy": "gh-pages -d storybook-static"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,7 +52,8 @@
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^5.0.0"
+    "tslint-react": "^5.0.0",
+    "gh-pages": "^2.2.0"
   },
   "husky": {
     "hooks": {
