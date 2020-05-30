@@ -1,5 +1,8 @@
 # React Design System
 
+Playground: [Design System Storybook](https://kcsuraj.github.io/react-design-system)
+Learn more: [Project Wiki](https://github.com/kcsuraj/react-design-system/wiki)
+
 **Available Scripts**
 | Npm Script        | Description                                                   |
 | ------------------|---------------------------------------------------------------|
