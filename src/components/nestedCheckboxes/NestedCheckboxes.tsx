@@ -4,6 +4,26 @@ import styled from 'styled-components';
 import { Checkbox } from 'components';
 
 /**
+ * Describes the shape individual item
+ *
+ * @interface IDataItem
+ */
+interface IDataItem {
+  id: number;
+  label: string;
+  checked?: boolean;
+}
+
+/**
+ * Describes the shape data
+ *
+ * @interface IData
+ */
+interface IData extends IDataItem {
+  items: IDataItem[];
+}
+
+/**
  * Describes the shape props received by NestedCheckboxes
  *
  * @interface IProps
@@ -13,17 +33,17 @@ interface IProps {
    *
    * Data structure
    */
-  data: any;
+  data: IData;
 
   /**
    *
    * Get result data with check status in event handler
    */
-  onChange: (data: any) => void;
+  onChange: (data: IDataItem) => void;
 }
 
 const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
-  const [filters, setFilters] = useState<any>(data);
+  const [filters, setFilters] = useState<IData>(data);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
 
   /**
@@ -33,7 +53,7 @@ const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
    * @memberof NestedCheckboxes
    */
   const handleAllChange = (): void => {
-    const checkedItems = filters.items.map((value: any) => {
+    const checkedItems = filters.items.map((value) => {
       return { ...value, checked: !isAllChecked };
     });
 
@@ -52,14 +72,14 @@ const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
    * @memberof NestedCheckboxes
    */
   const handleItemChange = (id: number, checked: boolean): void => {
-    const checkedItems = filters.items.map((value: any) => {
+    const checkedItems = filters.items.map((value) => {
       if (id === value.id) {
         return { ...value, checked };
       }
       return value;
     });
 
-    const isAllItemsChecked = checkedItems.every((val: any) => {
+    const isAllItemsChecked = checkedItems.every((val) => {
       return val.checked;
     });
 
@@ -74,11 +94,11 @@ const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
     <StyledNestedCheckboxes>
       <Checkbox label={filters.label} checked={isAllChecked} onChange={handleAllChange} />
       {!!filters.items.length &&
-        filters.items.map((value: any) => (
+        filters.items.map((value) => (
           <div key={value.id} className="checkbox-items">
             <Checkbox
               label={value.label}
-              checked={value.checked}
+              checked={value.checked ?? false}
               onChange={(e) => handleItemChange(value.id, e.target.checked)}
             />
           </div>
