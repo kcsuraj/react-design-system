@@ -1,0 +1,52 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import NestedCheckboxes from './NestedCheckboxes';
+import { action } from '@storybook/addon-actions';
+
+<Meta title="Components/Forms/NestedCheckboxes" />
+
+# Nested Checkboxes
+
+Checkboxes allow the user to select one or more items from a set.
+
+Import the component in your file:  
+`import { NestedCheckboxes } from 'components';`
+
+<Preview>
+  <Story name="default">
+    <NestedCheckboxes
+      data={{
+        id: 1,
+        label: 'Nepal',
+        items: [
+          {
+            id: 2,
+            label: 'Kathmandu'
+          },
+          {
+            id: 3,
+            label: 'Pokhara'
+          },
+          {
+            id: 4,
+            label: 'Chitwan'
+          },
+          {
+            id: 5,
+            label: 'Dharan'
+          },
+          {
+            id: 6,
+            label: 'Dhangadhi'
+          }
+        ]
+      }}
+      onChange={(result) => {
+        console.log(result);
+      }}
+    />
+  </Story>
+</Preview>
+
+### Props
+
+<Props of={NestedCheckboxes} />
