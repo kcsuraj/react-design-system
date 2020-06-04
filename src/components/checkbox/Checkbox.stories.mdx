@@ -1,0 +1,22 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import Checkbox from './Checkbox';
+import { action } from '@storybook/addon-actions';
+
+<Meta title="Components/Forms/Checkbox" />
+
+# Checkbox
+
+Checkboxes allow the user to select one or more items from a set.
+
+Import the component in your file  
+`import { Checkbox } from 'components';`
+
+<Preview>
+  <Story name="checkbox">
+    <Checkbox label="Remember me" onChange={action('onChange')} />
+  </Story>
+</Preview>
+
+### Props
+
+<Props of={Checkbox} />
