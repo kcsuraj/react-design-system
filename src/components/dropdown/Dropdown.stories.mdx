@@ -1,5 +1,6 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import Dropdown from './Dropdown';
+import { NavLink, BrowserRouter } from 'react-router-dom';
 
 <Meta title="Components/Dropdown" />
 
@@ -15,7 +16,7 @@ id: 1,
 label: "Kathmandu"
 }]
 
-#### Checked State
+#### Default
 
 <Preview>
   <Story name="default">
@@ -23,29 +24,33 @@ label: "Kathmandu"
       <Dropdown.Toggle>Select City</Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item>Kathmandu</Dropdown.Item>
-        {/* <Dropdown.Item>Pokhara</Dropdown.Item>
-        <Dropdown.Item>Dhangadhi</Dropdown.Item> */}
+        <Dropdown.Item>Pokhara</Dropdown.Item>
+        <Dropdown.Item>Dhangadhi</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   </Story>
 </Preview>
 
+#### With NavLink - React Router Dom
+
 <Preview>
-  <Story name="With data">
-    <Dropdown>
-      <Dropdown.Toggle>Select City</Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item
-          onClick={() => {
-            console.log('test');
-          }}
-        >
-          Kathmandu
-        </Dropdown.Item>
-        {/* <Dropdown.Item>Pokhara</Dropdown.Item>
-        <Dropdown.Item>Dhangadhi</Dropdown.Item> */}
-      </Dropdown.Menu>
-    </Dropdown>
+  <Story name="with NavLink">
+    <BrowserRouter>
+      <Dropdown>
+        <Dropdown.Toggle>About</Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item as={NavLink} to="/intro">
+            Introduction
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="/services">
+            Services
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="/gallery">
+            Gallery
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </BrowserRouter>
   </Story>
 </Preview>
 

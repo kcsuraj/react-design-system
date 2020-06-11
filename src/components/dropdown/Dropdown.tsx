@@ -84,4 +84,9 @@ const StyledDropdown = styled.div`
       }
     }
   }
+
+  /* Reset anchor tag style */
+  a {
+    text-decoration: none;
+  }
 `;
