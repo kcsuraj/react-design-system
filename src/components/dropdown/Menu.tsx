@@ -25,7 +25,7 @@ export interface IProps {
 }
 
 const Menu: FC<any> = (props) => {
-  const { showMenu } = useDropdown();
+  const { showMenu, handleSelectedOption } = useDropdown();
 
   const { options } = props;
 
@@ -34,8 +34,10 @@ const Menu: FC<any> = (props) => {
   const renderWithOptions = (): ReactNode => {
     return (
       <div className={appliedClassName}>
-        {options.map((option: IOption) => (
-          <Item key={option.id}>{option.label}</Item>
+        {options.map((option: IOption, index: number) => (
+          <Item key={index} onClick={() => handleSelectedOption(option.label)}>
+            {option.label}
+          </Item>
         ))}
       </div>
     );

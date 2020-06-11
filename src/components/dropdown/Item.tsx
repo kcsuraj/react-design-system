@@ -11,13 +11,15 @@ interface IProps {
   // HTML tag type
   as?: ElementType;
   // Click event handler
-  onClick?: (value: object) => string;
+  onClick?: () => void;
 }
 
 const Item: FC<IProps> = ({ as: Component = 'span', onClick, ...rest }) => {
   const { toggleMenu } = useDropdown();
 
-  return <Component onClick={toggleMenu} {...rest} className="dropdown-item" />;
+  const clickEventHandler = onClick ? onClick : toggleMenu;
+
+  return <Component onClick={clickEventHandler} {...rest} className="dropdown-item" />;
 };
 
 export default Item;
