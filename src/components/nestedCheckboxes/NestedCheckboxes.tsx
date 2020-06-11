@@ -109,7 +109,7 @@ const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
 
 export default NestedCheckboxes;
 
-const StyledNestedCheckboxes = styled.label`
+const StyledNestedCheckboxes = styled.div`
   label {
     margin-bottom: 8px;
   }
