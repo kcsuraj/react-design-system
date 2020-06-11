@@ -9,7 +9,7 @@ import { useDropdown } from './index';
  */
 interface IProps {
   // HTML tag type
-  as: ElementType;
+  as?: ElementType;
   // Click event handler
   onClick?: (value: object) => string;
 }
