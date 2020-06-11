@@ -1,0 +1,30 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import Dropdown from './Dropdown';
+
+<Meta title="Components/Dropdown" />
+
+# Dropdown
+
+Dropdown to select an option from list of options
+
+Import the component in your file:  
+`import { Dropdown } from 'components';`
+
+#### Checked State
+
+<Preview>
+  <Story name="default">
+    <Dropdown>
+      <Dropdown.Toggle>Select City</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>Kathmandu</Dropdown.Item>
+        <Dropdown.Item>Pokhara</Dropdown.Item>
+        <Dropdown.Item>Dhangadhi</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </Story>
+</Preview>
+
+### Props
+
+<Props of={Dropdown} />
