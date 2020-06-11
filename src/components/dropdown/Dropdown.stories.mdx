@@ -54,6 +54,36 @@ label: "Kathmandu"
   </Story>
 </Preview>
 
-### Props
+#### With dynamic data
+
+<Preview>
+  <Story name="With Options">
+    <Dropdown>
+      <Dropdown.Toggle>Select City</Dropdown.Toggle>
+      <Dropdown.Menu
+        options={[
+          {
+            key: 'ktm',
+            label: 'Kathmandu'
+          },
+          {
+            key: 'pok',
+            label: 'Pokhara'
+          },
+          {
+            key: 'dhg',
+            label: 'Dhangadhi'
+          }
+        ]}
+      />
+    </Dropdown>
+  </Story>
+</Preview>
+
+### Props Dropdown
 
 <Props of={Dropdown} />
+
+### Props Dropdown Menu
+
+<Props of={Dropdown.Menu} />

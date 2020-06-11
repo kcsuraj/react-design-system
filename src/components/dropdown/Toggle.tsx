@@ -13,11 +13,18 @@ interface IProps {
 }
 
 const Toggle: FC<IProps> = ({ as: Component = 'span', ...rest }) => {
-  const { showMenu, toggleMenu } = useDropdown();
+  const { showMenu, toggleMenu, selectedOption } = useDropdown();
 
   return (
     <Fragment>
-      <Component onClick={toggleMenu} {...rest} className="dropdown-toggle" />
+      {selectedOption ? (
+        <span onClick={toggleMenu} className="dropdown-toggle">
+          {selectedOption}
+        </span>
+      ) : (
+        <Component onClick={toggleMenu} {...rest} className="dropdown-toggle" />
+      )}
+
       <span
         className="dropdown-caret"
         style={
