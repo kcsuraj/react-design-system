@@ -1,6 +1,7 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import Dropdown from './Dropdown';
-import { NavLink, BrowserRouter } from 'react-router-dom';
+import DynamicDropdown from './DynamicDropdown';
+import { action } from '@storybook/addon-actions';
 
 <Meta title="Components/Dropdown" />
 
@@ -11,71 +12,16 @@ Dropdown to select an option from list of options
 Import the component in your file:  
 `import { Dropdown } from 'components';`
 
-const data = [{
-id: 1,
-label: "Kathmandu"
-}]
-
 #### Default
 
 <Preview>
   <Story name="default">
     <Dropdown>
-      <Dropdown.Toggle>Select City</Dropdown.Toggle>
+      <Dropdown.Toggle>Select</Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item>Kathmandu</Dropdown.Item>
-        <Dropdown.Item>Pokhara</Dropdown.Item>
-        <Dropdown.Item>Dhangadhi</Dropdown.Item>
+        <Dropdown.Item>First option</Dropdown.Item>
+        <Dropdown.Item>Second option</Dropdown.Item>
       </Dropdown.Menu>
-    </Dropdown>
-  </Story>
-</Preview>
-
-#### With NavLink - React Router Dom
-
-<Preview>
-  <Story name="with NavLink">
-    <BrowserRouter>
-      <Dropdown>
-        <Dropdown.Toggle>About</Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item as={NavLink} to="/intro">
-            Introduction
-          </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="/services">
-            Services
-          </Dropdown.Item>
-          <Dropdown.Item as={NavLink} to="/gallery">
-            Gallery
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    </BrowserRouter>
-  </Story>
-</Preview>
-
-#### With dynamic data
-
-<Preview>
-  <Story name="With Options">
-    <Dropdown>
-      <Dropdown.Toggle>Select City</Dropdown.Toggle>
-      <Dropdown.Menu
-        options={[
-          {
-            key: 'ktm',
-            label: 'Kathmandu'
-          },
-          {
-            key: 'pok',
-            label: 'Pokhara'
-          },
-          {
-            key: 'dhg',
-            label: 'Dhangadhi'
-          }
-        ]}
-      />
     </Dropdown>
   </Story>
 </Preview>
@@ -84,6 +30,37 @@ label: "Kathmandu"
 
 <Props of={Dropdown} />
 
+### Props Dropdown Toggle
+
+<Props of={Dropdown.Toggle} />
+
 ### Props Dropdown Menu
 
 <Props of={Dropdown.Menu} />
+
+### Props Dropdown Item
+
+<Props of={Dropdown.Item} />
+
+# Dynamic Dropdown
+
+<Preview>
+  <Story name="Dynamic Dropdown">
+    <DynamicDropdown
+      label="Select Country"
+      data={[
+        {
+          key: 'nepal',
+          label: 'Nepal'
+        },
+        {
+          key: 'norway',
+          label: 'Norway'
+        }
+      ]}
+      onSelectOption={action('onClick')}
+    />
+  </Story>
+</Preview>
+
+<Props of={DynamicDropdown} />

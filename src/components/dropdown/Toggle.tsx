@@ -1,6 +1,10 @@
-// Select components are used for collecting user provided information from a list of options.
-import React, { FC, ElementType, Fragment } from 'react';
-import { useDropdown } from './index';
+/**
+ * This compont toggles the visiblity of menu with list of optiona visible.
+ * It provides title indicating what the dropdown is supposed to do
+ */
+import React, { FC, ReactNode } from 'react';
+import styled from 'styled-components';
+import { useDropdown } from './Context';
 
 /**
  * Describes the shape props received by Dropdown Item
@@ -8,36 +12,37 @@ import { useDropdown } from './index';
  * @interface IProps
  */
 interface IProps {
-  // HTML tag type
-  as: ElementType;
+  /**
+   * Children rendered
+   */
+  children: ReactNode;
+  /**
+   * Custom classname adding CSS properties
+   */
+  className?: string;
 }
 
-const Toggle: FC<IProps> = ({ as: Component = 'span', ...rest }) => {
-  const { showMenu, toggleMenu, selectedOption } = useDropdown();
+const Toggle: FC<IProps> = ({ className, ...rest }) => {
+  const { toggleMenu } = useDropdown();
 
-  return (
-    <Fragment>
-      {selectedOption ? (
-        <span onClick={toggleMenu} className="dropdown-toggle">
-          {selectedOption}
-        </span>
-      ) : (
-        <Component onClick={toggleMenu} {...rest} className="dropdown-toggle" />
-      )}
-
-      <span
-        className="dropdown-caret"
-        style={
-          showMenu
-            ? { borderColor: 'transparent transparent #333', borderWidth: '0 4px 4px' }
-            : {
-                borderColor: '#333 transparent transparent',
-                borderWidth: '4px 4px 0'
-              }
-        }
-      />
-    </Fragment>
-  );
+  return <StyledToggle onClick={toggleMenu} className={className} {...rest} />;
 };
 
 export default Toggle;
+
+const StyledToggle = styled.div`
+  color: ${(props) => props.theme.color.grayLight};
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+    border-style: solid;
+    border-color: ${(props) => props.theme.color.grayLight} transparent transparent;
+    border-width: 4px 4px 0;
+  }
+`;

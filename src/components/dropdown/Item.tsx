@@ -1,6 +1,10 @@
-// Select components are used for collecting user provided information from a list of options.
-import React, { FC, ElementType } from 'react';
-import { useDropdown } from './index';
+/**
+ * This component implements individual option that user can select from list of options
+ * It is contained in Menu component
+ */
+import React, { FC } from 'react';
+import styled from 'styled-components';
+import { useDropdown } from './Context';
 
 /**
  * Describes the shape props received by Dropdown Item
@@ -8,18 +12,53 @@ import { useDropdown } from './index';
  * @interface IProps
  */
 interface IProps {
-  // HTML tag type
-  as?: ElementType;
-  // Click event handler
+  /**
+   * Callback fired when the menu item is clicked
+   */
   onClick?: () => void;
+  /**
+   * Custom classname adding CSS properties
+   */
+  className?: string;
 }
 
-const Item: FC<IProps> = ({ as: Component = 'span', onClick, ...rest }) => {
+const Item: FC<IProps> = ({ onClick, className, ...props }) => {
   const { toggleMenu } = useDropdown();
 
-  const clickEventHandler = onClick ? onClick : toggleMenu;
+  /**
+   * Handle option click event
+   *
+   * @async
+   * @return {void}
+   */
+  const selectItem = (): void => {
+    // Toggles visibility of dropdown to false value
+    toggleMenu();
 
-  return <Component onClick={clickEventHandler} {...rest} className="dropdown-item" />;
+    // Callback event triggered to parent component on click
+    if (onClick) {
+      onClick();
+    }
+  };
+
+  return <StyledItem onClick={selectItem} {...props} />;
 };
 
 export default Item;
+
+// Styling for Item component
+const StyledItem = styled.div`
+  color: ${(props) => props.theme.color.grayLight};
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  padding: 8px 12px;
+  transition: all 100ms ease-in;
+  white-space: nowrap;
+
+  /* Highlight option on hover */
+  &:hover {
+    background-color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.color.white};
+  }
+`;

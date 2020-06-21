@@ -1,0 +1,23 @@
+<Meta title="Hooks/useOutsideClick" />
+
+This hook triggers action when user clicks outside the component. It can be used to close dropdowns, tooltips on outside click.
+
+## Usage
+
+Import the hook in your component  
+`import { useOutsideClick } from 'hooks';`
+
+And create a component wrapper ref.  
+`import { useRef } from 'react';`
+
+And use it like so:
+
+```js
+const Dropdown: FC = () => {
+  const ref = useRef();
+
+  useOutsideClick(ref, () => setMenuVisible(false));
+
+  return <div ref={ref}>dropdown content</div>;
+};
+```

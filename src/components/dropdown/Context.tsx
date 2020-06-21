@@ -1,7 +1,12 @@
+/**
+ * Implements context to pass data through the Dropdown component tree without
+ * having to pass props down manually at every level
+ */
+
 import React, { createContext, useContext, useState } from 'react';
 
 /**
- * Describes the shape IContext
+ * Describes the shape IDropdownContext
  *
  * @interface IDropdownContext
  */
@@ -9,30 +14,21 @@ interface IDropdownContext {
   // Controls the visibility of dropdown menu
   showMenu: boolean;
 
-  // Selection option label
-  selectedOption?: string;
-
   // Toogles the flag showMenu
   toggleMenu: () => void;
-
-  // Set selected option handler
-  handleSelectedOption: (optionLabel: string) => void;
 }
 
+// Create Dropdown Context
 const DropdownContext = createContext<IDropdownContext>({
   showMenu: false,
-  selectedOption: '',
   toggleMenu: () => {
-    // toggle action
-  },
-  handleSelectedOption: (optionLabel: string) => {
-    // toggle action
+    // toggle menu
   }
 });
 
+// Provides mechanism to use the data defined in the context
 const useDropdownContext = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<string>('');
 
   /**
    * Toggle visiblity of menu
@@ -44,30 +40,19 @@ const useDropdownContext = () => {
     setShowMenu((status) => !status);
   };
 
-  /**
-   * Set selection option rendered in dropdown item
-   *
-   * @returns {void}
-   * @memberof useDropdownContext
-   */
-  const handleSelectedOption = (optionLabel: string): void => {
-    toggleMenu();
-    setSelectedOption(optionLabel);
-  };
-
   return {
-    handleSelectedOption,
-    selectedOption,
     showMenu,
     toggleMenu
   };
 };
 
+// Dropdown Context Provider to be used to wrap the Dropdown component that uses the states and methods
 const DropdownContextProvider = ({ children }: any) => {
   const dropdownOptions = useDropdownContext();
   return <DropdownContext.Provider value={dropdownOptions}>{children}</DropdownContext.Provider>;
 };
 
+// Get states and methods defined in Dropdown Context
 const useDropdown = () => {
   return useContext(DropdownContext);
 };
