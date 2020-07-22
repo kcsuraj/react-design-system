@@ -44,7 +44,6 @@ interface IProps {
 
 const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
   const [filters, setFilters] = useState<IData>(data);
-  const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
 
   /**
    * Handle all sub items check
@@ -54,14 +53,11 @@ const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
    */
   const handleAllChange = (): void => {
     const checkedItems = filters.items.map((value) => {
-      return { ...value, checked: !isAllChecked };
+      return { ...value, checked: !filters.checked };
     });
 
-    const filteredData = { ...data, items: checkedItems };
+    const filteredData = { ...data, checked: !filters.checked, items: checkedItems };
     setFilters(filteredData);
-
-    setIsAllChecked((checked) => !checked);
-
     onChange(filteredData);
   };
 
@@ -85,14 +81,13 @@ const NestedCheckboxes: FC<IProps> = ({ data, onChange }) => {
 
     const filteredData = { ...data, checked: isAllItemsChecked, items: checkedItems };
 
-    setIsAllChecked(isAllItemsChecked);
     setFilters(filteredData);
     onChange(filteredData);
   };
 
   return (
     <StyledNestedCheckboxes>
-      <Checkbox label={filters.label} checked={isAllChecked} onChange={handleAllChange} />
+      <Checkbox label={filters.label} checked={filters.checked ?? false} onChange={handleAllChange} />
       {!!filters.items.length &&
         filters.items.map((value) => (
           <div key={value.id} className="checkbox-items">
