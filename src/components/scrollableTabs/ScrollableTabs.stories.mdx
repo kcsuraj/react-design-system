@@ -1,0 +1,28 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import ScrollableTabs from './ScrollableTabs';
+import tabList from './tabList.json';
+
+<Meta title="Components/ScrollableTabs" />
+
+# Priority Navigation
+
+Scrollable tabs
+
+Import the component in your file  
+`import { ScrollableTabs } from 'components';`
+
+<Preview>
+  <Story name="Scrollable tabs">
+    <ScrollableTabs
+      tabItems={tabList.map((value, index) => (
+        <div key={index} style={{ padding: '6px 12px', fontSize: 14 }}>
+          {value.name}
+        </div>
+      ))}
+    />
+  </Story>
+</Preview>
+
+### Props
+
+<Props of={ScrollableTabs} />
