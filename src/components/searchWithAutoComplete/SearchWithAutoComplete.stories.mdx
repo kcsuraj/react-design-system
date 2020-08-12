@@ -1,0 +1,60 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import SearchWithAutoComplete from './SearchWithAutoComplete';
+
+<Meta title="Components/SearchWithAutoComplete" />
+
+# Search
+
+This component implements search box with autocomplete values
+
+<Preview>
+  <Story name="Search with auto complete">
+    <SearchWithAutoComplete
+      data={[
+        {
+          id: '1',
+          label: 'Kathmandu'
+        },
+        {
+          id: '2',
+          label: 'Pokhara'
+        },
+        {
+          id: '3',
+          label: 'Lalitpur'
+        },
+        {
+          id: '4',
+          label: 'Bhaktapur'
+        },
+        {
+          id: '5',
+          label: 'Biratnagar'
+        },
+        {
+          id: '6',
+          label: 'Kathmandu'
+        },
+        {
+          id: '7',
+          label: 'Bharatpur'
+        },
+        {
+          id: '8',
+          label: 'Birgunj'
+        },
+        {
+          id: '9',
+          label: 'hetauda'
+        }
+      ]}
+      onSelectOption={(value) => {
+        console.log(value);
+      }}
+    />
+  </Story>
+</Preview>
+
+### Props
+
+<Props of={SearchWithAutoComplete} />
